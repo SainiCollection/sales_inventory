@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSales } from '../salesSlice';
-import { Container, Typography, Paper } from '@mui/material';
+import { Container, Typography, Paper, Box } from '@mui/material';
+import Sidebar from '../../../components/compound/Sidebar';
 
 const SalesPage = () => {
   const dispatch = useDispatch();
@@ -12,14 +13,18 @@ const SalesPage = () => {
   }, [dispatch]);
 
   return (
-    <Container>
-      <Typography variant="h4" gutterBottom>
-        Sales
-      </Typography>
-      <Paper style={{ padding: 16 }}>
-        <pre>{JSON.stringify(records, null, 2)}</pre>
-      </Paper>
-    </Container>
+    <Box display={'flex'}>
+      <Sidebar/>
+      <Container>
+        <Typography variant="h4" gutterBottom>
+          Sales
+        </Typography>
+        <Paper style={{ padding: 16 }}>
+          <pre>{JSON.stringify(records, null, 2)}</pre>
+        </Paper>
+      </Container>
+    </Box>
+
   );
 };
 

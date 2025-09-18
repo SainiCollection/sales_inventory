@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Grid, Card, CardContent, Typography, Box } from '@mui/material';
-import Sidebar from '../../../components/Sidebar';
+import Sidebar from '../../../components/compound/Sidebar';
 
 const MiniChart = ({ color = 'primary', value = 0 }) => (
   <Box sx={{ width: '100%', height: 80, bgcolor: 'grey.100', borderRadius: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
