@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAccounts } from '../accountsSlice';
-import { Container, Typography, Paper, Box } from '@mui/material';
+import {  Typography, Paper, Box } from '@mui/material';
 import Sidebar from '../../../components/compound/Sidebar';
 
 const AccountsPage = () => {
@@ -16,14 +16,14 @@ const AccountsPage = () => {
     <Box display="flex">
       <Sidebar />
 
-      <Container>
+      <Box sx={{ p: 2, width: "87%", overflow: "hidden" }}>
         <Typography variant="h4" gutterBottom>
           Accounts
         </Typography>
         <Paper sx={{ p: 2 }}>
           <pre>{JSON.stringify(users, null, 2)}</pre>
         </Paper>
-      </Container>
+      </Box>
     </Box>
 
   );

@@ -16,8 +16,7 @@ const DashboardPage = () => {
   return (
     <Box display="flex">
       <Sidebar />
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <Container maxWidth="lg">
+      <Box component="main" sx={{ p: 2, width: "87%", overflow: "hidden" }}>
           <Typography variant="h5" gutterBottom>Dashboard</Typography>
           <Grid container spacing={2}>
             <Grid item xs={12} md={4}>
@@ -48,7 +47,6 @@ const DashboardPage = () => {
               </Card>
             </Grid>
           </Grid>
-        </Container>
       </Box>
     </Box>
   );

@@ -9,7 +9,7 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../atom/LogoutButton';
 
-const drawerWidth = 220;
+const drawerWidth = "13%";
 
 const Sidebar = () => (
   <Drawer
