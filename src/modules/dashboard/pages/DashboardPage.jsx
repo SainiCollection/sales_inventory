@@ -1,11 +1,16 @@
 import React from 'react';
-import { Grid, Card, CardContent, Typography, Box } from '@mui/material';
+import { Grid, Typography, Box } from '@mui/material';
 import Sidebar from '../../../components/compound/Sidebar';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import DashboardCard from '../components/DashboardCard';
+import SalesLineChart from '../components/SalesLineChart';
+import { salesChartData } from '../mockdata';
+import { categoryData } from '../mockdata';
+import SalesPieChart from '../components/SalesPiChart';
+
 
 
 
@@ -34,7 +39,7 @@ const DashboardPage = () => {
           <Grid item sx={{width:"24%"}}>
             <DashboardCard
               title="Total Sales This Month"
-              metric="$450,000"
+              metric="₹ 450,000"
               icon={<ShoppingCartIcon />}
               color="#2ecc71"
             />
@@ -47,6 +52,14 @@ const DashboardPage = () => {
               color="#f39c12"
             />
           </Grid>
+        </Grid>
+        <Grid sx={{py:2, display:"flex", gap:2, width:"100%"}}>
+          <Box sx={{width:"50%"}}>
+          <SalesLineChart data={salesChartData}/>
+          </Box>
+          <Box sx={{width:"50%"}}>
+            <SalesPieChart data={categoryData}/>
+          </Box>
         </Grid>
       </Box>
     </Box>
