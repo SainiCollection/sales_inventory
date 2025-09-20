@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import FilterListAltIcon from '@mui/icons-material/FilterListAlt';
 import { Box, Button, Grid, MenuItem, TextField } from '@mui/material';
 
-const InventoryFilters = () => {
+const SalesFilters = () => {
     return (
         <Box sx={{ mb: 2 }}>
             <Accordion>
@@ -133,4 +133,4 @@ const InventoryFilters = () => {
     );
 }
 
-export default InventoryFilters;
+export default SalesFilters;

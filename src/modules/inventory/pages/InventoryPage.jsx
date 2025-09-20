@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 
 import Sidebar from '../../../components/compound/Sidebar';
-import mockData from '../mockdata.json';
+import mockData from '../../../utils/mockdata.json';
 import InventoryHeader from '../components/InventoryHeader';
 import SearchBar from '../components/SearchBar';
 import InventoryTable from '../components/InventoryTable';
@@ -31,9 +31,6 @@ const InventoryPage = () => {
   const filtered = rows.filter((it) => it.name.toLowerCase().includes(query.toLowerCase()) || (it.sku || '').toLowerCase().includes(query.toLowerCase()));
 
   const handleDelete = (id) => {
-    // simple local confirmation and removal for demo
-    // in a real app dispatch delete action to the API
-    // eslint-disable-next-line no-alert
     if (window.confirm('Delete this product?')) {
       setRows((r) => r.filter((x) => x.id !== id));
     }
