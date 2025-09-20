@@ -33,7 +33,7 @@ const InventoryTable = ({filtered, handleDelete}) => {
                                 <TableCell>{it.i_id}</TableCell>
                                 <TableCell>
                                     <Box display="flex" alignItems="center" gap={2}>
-                                        <Box sx={{ width: 32, height: 32, bgcolor: 'grey.200', borderRadius: 1 }} />
+                                        <Box component="img" src={it.sku} alt='Product' sx={{ width: 32, height: 32, bgcolor: 'grey.200', borderRadius: 1 }} />
                                         <Box sx={{ fontSize: "0.8rem" }}>
                                             <Typography>{it.name}</Typography>
                                             <Typography variant="caption" color="text.secondary">#{it.id || it.sku}</Typography>
