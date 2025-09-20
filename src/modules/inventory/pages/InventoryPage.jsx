@@ -3,9 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchItems } from '../inventorySlice';
 import {
   Box,
-  Card,
-  CardContent,
-  Typography,
 } from '@mui/material';
 
 import Sidebar from '../../../components/compound/Sidebar';
@@ -14,19 +11,6 @@ import InventoryHeader from '../components/InventoryHeader';
 import SearchBar from '../components/SearchBar';
 import InventoryTable from '../components/InventoryTable';
 import InventoryFilters from '../components/InventoryFilters';
-
-
-const StatCard = ({ title, value, caption }) => (
-  <Card variant="outlined" sx={{ minWidth: 180 }}>
-    <CardContent>
-      <Typography variant="subtitle2" color="textSecondary">
-        {title}
-      </Typography>
-      <Typography variant="h5">{value}</Typography>
-      {caption && <Typography variant="caption">{caption}</Typography>}
-    </CardContent>
-  </Card>
-);
 
 const InventoryPage = () => {
   const dispatch = useDispatch();
