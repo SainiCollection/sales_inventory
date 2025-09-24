@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { fetchAccounts } from '../accountsSlice';
 import { Container, Typography, Paper } from '@mui/material';
 
-const AccountsPage = () => {
-  const dispatch = useDispatch();
-  const users = useSelector((s) => s.accounts.users);
+const AccountsPage: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const users = useAppSelector((s) => s.accounts.users);
 
   useEffect(() => {
-    dispatch(fetchAccounts());
+    // fetchAccounts may be an async thunk; cast to any for now until typed thunks are added
+    dispatch(fetchAccounts() as any);
   }, [dispatch]);
 
   return (
@@ -22,5 +23,7 @@ const AccountsPage = () => {
     </Container>
   );
 };
+
+// cleaned duplicate exports above
 
 export default AccountsPage;

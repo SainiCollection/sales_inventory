@@ -1,14 +1,17 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import * as inventoryAPI from './services/inventoryAPI';
+import type { InventoryItem, InventoryState } from './types';
 
 export const fetchItems = createAsyncThunk('inventory/fetchItems', async () => {
   const res = await inventoryAPI.fetchItems();
-  return res.data;
+  return res.data as InventoryItem[];
 });
+
+const initialState: InventoryState = { items: [], status: 'idle', error: null };
 
 const inventorySlice = createSlice({
   name: 'inventory',
-  initialState: { items: [], status: 'idle', error: null },
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder

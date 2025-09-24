@@ -1,14 +1,17 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import * as accountsAPI from './services/accountsAPI';
+import type { AccountsState } from './types';
 
 export const fetchAccounts = createAsyncThunk('accounts/fetchAccounts', async () => {
   const res = await accountsAPI.fetchAccounts();
   return res.data;
 });
 
+const initialState: AccountsState = { users: [], status: 'idle', error: null };
+
 const accountsSlice = createSlice({
   name: 'accounts',
-  initialState: { users: [], status: 'idle', error: null },
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder

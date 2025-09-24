@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { fetchItems } from '../inventorySlice';
 import {
   Box,
   Container,
-  Grid,
   Card,
   CardContent,
   Typography,
@@ -30,10 +29,16 @@ import { formatCurrency } from '../../../utils';
 import mockData from '../mockdata.json';
 
 
-const StatCard = ({ title, value, caption }) => (
+type StatCardProps = {
+  title: string;
+  value: React.ReactNode;
+  caption?: string;
+};
+
+const StatCard: React.FC<StatCardProps> = ({ title, value, caption }) => (
   <Card variant="outlined" sx={{ minWidth: 180 }}>
     <CardContent>
-      <Typography variant="subtitle2" color="textSecondary">
+      <Typography variant="subtitle2" color="text.secondary">
         {title}
       </Typography>
       <Typography variant="h5">{value}</Typography>
@@ -43,8 +48,8 @@ const StatCard = ({ title, value, caption }) => (
 );
 
 const InventoryPage = () => {
-  const dispatch = useDispatch();
-  const items = useSelector((s) => s.inventory.items) || [];
+  const dispatch = useAppDispatch();
+  const items = useAppSelector((s) => s.inventory.items) || [];
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
 
@@ -79,20 +84,12 @@ const InventoryPage = () => {
             Inventory Management
           </Typography>
 
-          <Grid container spacing={2} sx={{ mb: 2 }}>
-            <Grid item>
-              <StatCard title="Total Products" value={1248} />
-            </Grid>
-            <Grid item>
-              <StatCard title="Low Stock" value={24} />
-            </Grid>
-            <Grid item>
-              <StatCard title="Sales Today" value="$2,450" />
-            </Grid>
-            <Grid item>
-              <StatCard title="Pending Orders" value={12} />
-            </Grid>
-          </Grid>
+          <Box sx={{ display: 'flex', gap: 2, mb: 2 }}>
+            <StatCard title="Total Products" value={1248} />
+            <StatCard title="Low Stock" value={24} />
+            <StatCard title="Sales Today" value="$2,450" />
+            <StatCard title="Pending Orders" value={12} />
+          </Box>
 
           <Paper sx={{ p: 2, mb: 2 }}>
             <Box display="flex" justifyContent="space-between" alignItems="center">

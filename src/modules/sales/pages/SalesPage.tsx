@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { fetchSales } from '../salesSlice';
 import { Container, Typography, Paper } from '@mui/material';
 
 const SalesPage = () => {
-  const dispatch = useDispatch();
-  const records = useSelector((s) => s.sales.records);
+  const dispatch = useAppDispatch();
+  const records = useAppSelector((s) => s.sales.records);
 
   useEffect(() => {
     dispatch(fetchSales());
