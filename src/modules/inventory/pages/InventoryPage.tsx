@@ -23,7 +23,6 @@ import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import Sidebar from '../../../components/Sidebar';
 import Tooltip from '@mui/material/Tooltip';
 import { formatCurrency } from '../../../utils';
 import mockData from '../mockdata.json';
@@ -77,7 +76,6 @@ const InventoryPage = () => {
 
   return (
     <Box display="flex">
-      <Sidebar />
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <Container maxWidth="lg">
           <Typography variant="h5" gutterBottom>

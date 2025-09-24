@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container, Card, CardContent, Typography, Box } from '@mui/material';
-import Sidebar from '../../../components/Sidebar';
 
 const MiniChart = ({ color = 'primary', value = 0 }) => (
   <Box sx={{ width: '100%', height: 80, bgcolor: 'grey.100', borderRadius: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -15,7 +14,6 @@ const DashboardPage = () => {
 
   return (
     <Box display="flex">
-      <Sidebar />
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <Container maxWidth="lg">
           <Typography variant="h5" gutterBottom>Dashboard</Typography>
