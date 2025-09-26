@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Box, Typography, TextField, Button } from '@mui/material';
 
 const ForgotPasswordPage: React.FC = () => (
-  <Container maxWidth="xs">
+  <Container maxWidth={'xs' as unknown as any}>
     <Box mt={8}>
       <Typography variant="h5" gutterBottom>
         Reset password

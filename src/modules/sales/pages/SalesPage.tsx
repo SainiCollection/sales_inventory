@@ -1,26 +1,50 @@
-import React, { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+// import the thunk action, not the slice reducer
 import { fetchSales } from '../salesSlice';
-import { Container, Typography, Paper } from '@mui/material';
+import {
+  Box,
+} from '@mui/material';
 
-const SalesPage = () => {
-  const dispatch = useAppDispatch();
-  const records = useAppSelector((s) => s.sales.records);
+import Sidebar from '../components/Sidebar';
+import mockData from '../../../utils/mockdata.json';
+import { AppDispatch, RootState } from '../../../redux/types';
+import { SaleItem } from '../types';
+import SalesTable from '../components/SalesTable';
+
+
+const InventoryPage = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const items = useSelector((s: RootState) => s.inventory.items) || [];
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
     dispatch(fetchSales());
   }, [dispatch]);
 
+  const list = items.length ? items : mockData;
+  type ItemType = typeof mockData[0] | SaleItem;
+  const [rows, setRows] = useState<ItemType[]>(list);
+
+  useEffect(() => {
+    setRows(list);
+  }, [list]);
+
+  const filtered = rows.filter((it) => it.name.toLowerCase().includes(query.toLowerCase()) || (it.sku || '').toLowerCase().includes(query.toLowerCase()));
+  const handleDelete = (id: string | number) => {
+    if (window.confirm('Delete this product?')) {
+      setRows((r) => r.filter((x) => x.id !== id));
+    }
+  };
+
   return (
-    <Container>
-      <Typography variant="h4" gutterBottom>
-        Sales
-      </Typography>
-      <Paper style={{ padding: 16 }}>
-        <pre>{JSON.stringify(records, null, 2)}</pre>
-      </Paper>
-    </Container>
+    <Box display="flex" sx={{ width: "100%", overflow: "hidden" }}>
+      <Sidebar />
+      <Box sx={{width:"100%", p:2}}>
+        <SalesTable filtered={filtered} handleDelete={handleDelete} query={query} setQuery={setQuery} />
+      </Box>
+    </Box>
   );
 };
 
-export default SalesPage;
+export default InventoryPage;

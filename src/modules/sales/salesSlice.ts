@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import * as salesAPI from './services/salesAPI';
-import type { SalesState, SaleRecord } from './types';
+import type { SalesState, SaleItem } from './types';
 
 export const fetchSales = createAsyncThunk('sales/fetchSales', async () => {
   const res = await salesAPI.fetchSales();
-  return res.data as SaleRecord[];
+  return res.data as SaleItem[];
 });
 
 const initialState: SalesState = { records: [], status: 'idle', error: null };

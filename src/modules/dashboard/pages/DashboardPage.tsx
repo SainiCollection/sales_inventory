@@ -15,7 +15,7 @@ const DashboardPage = () => {
   return (
     <Box display="flex">
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <Container maxWidth="lg">
+        <Container maxWidth={'lg' as unknown as any}>
           <Typography variant="h5" gutterBottom>Dashboard</Typography>
           <Box sx={{ display: 'flex', gap: 2 }}>
             <Card sx={{ flex: 1 }}>

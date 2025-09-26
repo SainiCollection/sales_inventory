@@ -1,13 +1,19 @@
-export interface SaleRecord {
+export interface SaleItem {
   id: number | string;
-  productId?: number | string;
+  sku?: string;                      // image URL
+  name: string;
   quantity: number;
-  total?: number;
-  date?: string;
+  brand?: string;
+  category?: string;
+  vendor?: string;
+  compatibility?: string[];          // array of compatible car models
+  engine_type?: ("Petrol" | "Diesel")[]; // array of engine types
+  selling_price?: number;
+  label?: string;   
 }
 
 export interface SalesState {
-  records: SaleRecord[];
+  records: SaleItem[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error?: string | null;
 }

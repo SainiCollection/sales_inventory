@@ -3,7 +3,7 @@ import { Container, Box, Typography, TextField, Button } from '@mui/material';
 
 const SignupPage: React.FC = () => {
   return (
-    <Container maxWidth="xs">
+    <Container maxWidth={'xs' as unknown as any}>
       <Box mt={8}>
         <Typography variant="h5" gutterBottom>
           Create an account
