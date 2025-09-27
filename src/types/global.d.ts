@@ -5,3 +5,13 @@ declare module '*.json' {
 }
 
 export {};
+
+export interface StatMetric {
+    title: string;
+    value: string;
+    change?: string;
+    changeDescription?: string;
+    icon: React.ReactNode; 
+    iconBgColor?: string;
+    changeType?: 'increase' | 'decrease' | 'neutral';
+}

@@ -11,6 +11,7 @@ import {
     Typography,
 } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import {Link as RouterLink} from 'react-router-dom';
 import { logout } from "../../modules/auth/authSlice";
 import { useAppDispatch } from "../../redux/hooks";
 
@@ -55,7 +56,7 @@ const Header = () => {
             <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
                 {/* Brand Logo */}
                 <Typography
-                    variant="h6"
+                    variant="h5"
                     noWrap
                     component="div"
                     sx={{
@@ -128,8 +129,8 @@ const Header = () => {
                             },
                         }}
                     >
-                        <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-                        <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
+                        <MenuItem component={RouterLink} to="/AdminProfile" onClick={handleMenuClose}>Profile</MenuItem>
+                        <MenuItem component={RouterLink} to="/management" onClick={handleMenuClose}>Manage</MenuItem>
                         <MenuItem
                             onClick={() => {
                                 handleMenuClose();

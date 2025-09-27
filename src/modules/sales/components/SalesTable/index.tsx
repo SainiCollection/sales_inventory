@@ -7,7 +7,6 @@ import {
     CardContent,
     CardHeader,
     Chip,
-    IconButton,
     Paper,
     Table,
     TableBody,
@@ -18,10 +17,9 @@ import {
     Tooltip,
     Typography,
 } from "@mui/material";
+import { Link as RouterLink } from 'react-router-dom';
 import { styled } from "@mui/material/styles";
 import { tableCellClasses } from "@mui/material/TableCell";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { formatCurrency } from "../../../../utils";
@@ -68,15 +66,20 @@ const SalesTable = ({ filtered, handleDelete, query, setQuery }: { filtered: any
             <CardHeader
                 title={
                     <Box display="flex" alignItems="center" justifyContent="space-between">
-                        <Typography variant="h5" fontWeight="bold">
+                        {/* <Typography variant="h5" fontWeight="bold">
                             Sales Management
-                        </Typography>
-                        <Box display="flex" alignItems="center" gap={1} justifyContent="center">
-                            <Box>
+                        </Typography> */}
+                        <Box display="flex" alignItems="center" gap={1} justifyContent="center" sx={{width:"100%"}}>
+                            {/* <Box> */}
                                 <SearchBar query={query} setQuery={setQuery} />
-                            </Box>
+                            {/* </Box> */}
                             <Tooltip title="Cart">
-                                <Button color="secondary" sx={{color:"#616161"}}>
+                                <Button
+                                    component={RouterLink}   // use RouterLink here
+                                    to="/cart"               // the target route
+                                    color="secondary"
+                                    sx={{ color: "#616161" }}
+                                >
                                     <ShoppingCartIcon />
                                 </Button>
                             </Tooltip>
@@ -187,17 +190,22 @@ const SalesTable = ({ filtered, handleDelete, query, setQuery }: { filtered: any
 
                                         <StyledTableCell>
                                             <Box sx={{ display: "flex", gap: 1 }}>
+                                                <Tooltip title="View More Details">
+                                                    <Button component={RouterLink} to={'/productDetails'} size="small">
+                                                        <VisibilityIcon fontSize="small" color="success" />
+                                                    </Button>
+                                                </Tooltip>
                                                 <Button
                                                     variant="outlined"
                                                     color="secondary"
-                                                    sx={{ textTransform: "none", borderRadius: 1, fontSize: ".5rem" }}
+                                                    sx={{ textTransform: "none", borderRadius: 1, fontSize: ".5rem", p:.5 }}
                                                 >
                                                     Add to Cart
                                                 </Button>
                                                 <Button
                                                     variant="contained"
                                                     color="info"
-                                                    sx={{ textTransform: "none", borderRadius: 1, fontSize: ".5rem" }}
+                                                    sx={{ textTransform: "none", borderRadius: 1, fontSize: ".5rem", p:.5 }}
                                                 >
                                                     Sell Now
                                                 </Button>

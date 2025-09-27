@@ -1,10 +1,10 @@
 // Save this as AddProductButton.tsx
 
-import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, Tooltip } from '@mui/material';
 import React, { useState } from 'react';
 import AddIcon from "@mui/icons-material/Add";
 // Import the separate form component
-import AddProductForm from '../AddProductForm'; 
+import AddProductForm from '../AddProductForm';
 
 interface AddProductButtonProps {
     open: boolean; // Prop to control the display of the "Add New Product" text
@@ -40,16 +40,19 @@ const AddProductButton: React.FC<AddProductButtonProps> = ({ open }) => {
                             },
                         }}
                     >
-                        <ListItemIcon
-                            sx={{
-                                minWidth: 0,
-                                mr: open ? 2 : "auto",
-                                justifyContent: "center",
-                                color: "#fff",
-                            }}
-                        >
-                            <AddIcon fontSize="medium" />
-                        </ListItemIcon>
+                        <Tooltip title="Add New Product" >
+                            <ListItemIcon
+                                sx={{
+                                    minWidth: 0,
+                                    mr: open ? 2 : "auto",
+                                    justifyContent: "center",
+                                    color: "#fff",
+                                }}
+                            >
+                                <AddIcon fontSize="medium" />
+                            </ListItemIcon>
+                        </Tooltip>
+
                         {open && (
                             <ListItemText
                                 primary="Add New Product"

@@ -4,6 +4,11 @@ import { useAppSelector } from '../redux/hooks';
 import { CircularProgress, Box } from '@mui/material';
 import AuthLayout from '../layouts/AuthLayout';
 import MainLayout from '../layouts/MainLayout';
+import CartPage from '../modules/cart/pages/CartPage';
+import ProductDetailPage from '../modules/inventory/pages/ProductDetails';
+import AdminProfilePage from '../modules/admin/pages/AdminProfilePage';
+import AdminSettingsPage from '../modules/admin/pages/ManagementPage.tsx';
+import ManagementPage from '../modules/admin/pages/ManagementPage.tsx';
 
 const InventoryPage = lazy(() => import('../modules/inventory/pages/InventoryPage'));
 const SalesPage = lazy(() => import('../modules/sales/pages/SalesPage'));
@@ -47,6 +52,10 @@ const AppRouter = () => (
         <Route path="/inventory" element={<InventoryPage />} />
         <Route path="/sales" element={<SalesPage />} />
         <Route path="/accounts" element={<AccountsPage />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/productDetails" element={<ProductDetailPage />} />
+        <Route path="/adminProfile" element={<AdminProfilePage />} />
+        <Route path="/Management" element={<ManagementPage />} />
       </Route>
 
       <Route path="/" element={<Navigate to="/dashboard" replace />} />

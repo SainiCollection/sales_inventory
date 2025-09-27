@@ -9,7 +9,8 @@ import {
     ListItemIcon,
     ListItemText,
     Stack,
-    Typography
+    Typography,
+    Tooltip
 } from "@mui/material";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
@@ -24,7 +25,7 @@ const collapsedWidth = 60; // Slightly increased for better icon padding
 export default function Sidebar() {
     const [open, setOpen] = React.useState(true);
     const toggleDrawer = () => setOpen(!open);
-
+    const tooltipTitle = open ? "Collapse Sidebar" : "Expand Sidebar";
     return (
         <Box
             sx={{
@@ -33,7 +34,7 @@ export default function Sidebar() {
                 borderRight: "1px solid #e0e0e0", // Lighter border
                 bgcolor: "#f5f5f5", // Light background color for contrast
                 flexShrink: 0,
-                height: "calc(100vh - 64px)", 
+                height: "calc(100vh - 64px)",
                 display: 'flex',
                 flexDirection: 'column',
                 position: 'relative', // Necessary for absolute positioning of collapse button
@@ -56,27 +57,34 @@ export default function Sidebar() {
                     <Stack direction="row" spacing={1} alignItems="center" sx={{ color: '#333' }}>
                         <TrendingUpIcon color="primary" />
                         <Typography variant="subtitle1" fontWeight="bold">
-                            Sales Tools
+                            Manage Sales
                         </Typography>
                     </Stack>
                 )}
 
                 {/* Collapse Button (Now placed neatly inside the sidebar top) */}
-                <IconButton
-                    onClick={toggleDrawer}
-                    sx={{
-                        color: 'text.secondary',
-                        '&:hover': {
-                            color: 'primary.main',
-                            bgcolor: 'rgba(0, 0, 0, 0.04)',
-                        },
-                        p: open ? 1 : 0.5,
-                        ml: open ? 0 : 'auto',
-                        mr: open ? 0 : 'auto',
-                    }}
-                >
-                    {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-                </IconButton>
+                <Tooltip title={tooltipTitle}>
+                    <IconButton
+                        onClick={toggleDrawer}
+                        sx={{
+                            color: 'text.secondary',
+                            '&:hover': {
+                                color: 'primary.main',
+                                bgcolor: 'rgba(0, 0, 0, 0.04)',
+                            },
+                            p: open ? 1 : 0.5,
+                            ml: open ? 0 : 'auto',
+                            mr: open ? 0 : 'auto',
+                        }}
+                    >
+                        {open ? (
+                            <ChevronLeftIcon />
+                        ) : (
+                            <ChevronRightIcon />
+                        )}
+                    </IconButton>
+                </Tooltip>
+
             </Box>
 
             <Divider />
@@ -97,7 +105,7 @@ export default function Sidebar() {
                                 borderRadius: 1,
                                 bgcolor: open ? 'transparent' : 'transparent', // Default state
                                 '&:hover': {
-                                    bgcolor: 'rgba(0, 0, 0, 0.08)', // Light hover effect
+                                    bgcolor: 'transparent', // Light hover effect
                                 },
                             }}
                         >
@@ -109,7 +117,9 @@ export default function Sidebar() {
                                     color: 'text.secondary'
                                 }}
                             >
-                                <FilterAltIcon fontSize="small" />
+                                <Tooltip title="Filter products">
+                                    <FilterAltIcon fontSize="small" />
+                                </Tooltip>
                             </ListItemIcon>
                             {open && (
                                 <ListItemText

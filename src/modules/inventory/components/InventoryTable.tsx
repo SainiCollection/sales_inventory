@@ -2,7 +2,6 @@ import * as React from "react";
 import {
     Badge,
     Box,
-    Button,
     Card,
     CardContent,
     CardHeader,
@@ -18,12 +17,12 @@ import {
     Tooltip,
     Typography,
 } from "@mui/material";
+import { Link as RouterLink } from 'react-router-dom'
 import { styled } from "@mui/material/styles";
 import { tableCellClasses } from "@mui/material/TableCell";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { formatCurrency } from "../../../utils";
 import SearchBar from "./SearchBar";
 
@@ -67,21 +66,12 @@ const InventoryTable = ({ filtered, handleDelete, query, setQuery }: { filtered:
         <Card sx={{ maxWidth: "100%" }}>
             <CardHeader
                 title={
-                    <Box display="flex" alignItems="center" justifyContent="space-between">
-                        <Typography variant="h5" fontWeight="bold">
-                            Inventory Management
-                        </Typography>
-                        <Box display="flex" alignItems="center" gap={1} justifyContent="center">
-                            <Box>
-                                <SearchBar query={query} setQuery={setQuery} />
-                            </Box>
-                            <Tooltip title="Cart">
-                                <Button color="secondary" sx={{color:"#616161"}}>
-                                    <ShoppingCartIcon />
-                                </Button>
-                            </Tooltip>
+                    <Box display="flex" alignItems="center" justifyContent="center" sx={{ width: "100%" }}>
+                        <Box sx={{ width: "100%" }}>
+                            <SearchBar query={query} setQuery={setQuery} />
                         </Box>
                     </Box>
+
                 }
             />
             <CardContent sx={{ pt: 0 }}>
@@ -193,7 +183,7 @@ const InventoryTable = ({ filtered, handleDelete, query, setQuery }: { filtered:
                                         <StyledTableCell>
                                             <Box sx={{ display: "flex", gap: 0.5 }}>
                                                 <Tooltip title="View More Details">
-                                                    <IconButton size="small">
+                                                    <IconButton component={RouterLink} to={'/productDetails'} size="small">
                                                         <VisibilityIcon fontSize="small" color="success" />
                                                     </IconButton>
                                                 </Tooltip>
