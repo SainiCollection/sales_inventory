@@ -7,7 +7,6 @@ import MainLayout from '../layouts/MainLayout';
 import CartPage from '../modules/cart/pages/CartPage';
 import ProductDetailPage from '../modules/inventory/pages/ProductDetails';
 import AdminProfilePage from '../modules/admin/pages/AdminProfilePage';
-import AdminSettingsPage from '../modules/admin/pages/ManagementPage.tsx';
 import ManagementPage from '../modules/admin/pages/ManagementPage.tsx';
 
 const InventoryPage = lazy(() => import('../modules/inventory/pages/InventoryPage'));

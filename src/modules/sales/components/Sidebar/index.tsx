@@ -16,7 +16,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 // TODO: Update the import path below to the correct location of TableFilters, or create the component if it doesn't exist.
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import SellIcon from '@mui/icons-material/Sell';
 import TableFilters from "../../../../components/TableFilters";
 
 const drawerWidth = 240;
@@ -55,7 +55,7 @@ export default function Sidebar() {
                 {/* Logo/Title Placeholder */}
                 {open && (
                     <Stack direction="row" spacing={1} alignItems="center" sx={{ color: '#333' }}>
-                        <TrendingUpIcon color="primary" />
+                        <SellIcon color="primary" />
                         <Typography variant="subtitle1" fontWeight="bold">
                             Manage Sales
                         </Typography>

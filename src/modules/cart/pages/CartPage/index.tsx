@@ -1,6 +1,6 @@
 // CartPage.tsx
 import React, { useState } from 'react';
-import { Box, Typography, Divider } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import CartSummary from '../components/CartSummary';
 import CartItemList from '../components/CartItemList';
 
